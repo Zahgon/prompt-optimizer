@@ -55,7 +55,7 @@ class PromptOptim(ABC):
         Returns:
             str: The protected optimized prompt text.
         """
-        return self.optimize(prompt)
+        pass
 
     def run_json(self, json_data: list, skip_system: bool = False) -> dict:
         """
@@ -67,13 +67,7 @@ class PromptOptim(ABC):
         Returns:
             dict: The JSON data object with the content field replaced by the optimized prompt text.
         """
-        optim_json_data = copy.deepcopy(json_data)
-
-        for data in optim_json_data:
-            if skip_system and data["role"] == "system":
-                continue
-            data["content"] = self.run(data["content"])
-        return optim_json_data
+        pass
 
     def run_langchain(self, langchain_data: list, skip_system: bool = False):
         """
@@ -87,15 +81,7 @@ class PromptOptim(ABC):
             list: The modified langchain data.
 
         """
-
-        optim_langchain_data = copy.deepcopy(langchain_data)
-
-        for data in optim_langchain_data:
-            if skip_system and data.type == "system":
-                continue
-            data.content = self.run(data.content)
-
-        return optim_langchain_data
+        pass
 
     # def batch_run(
     #     self, data: list, skip_system: bool = False, json: bool = True

@@ -41,14 +41,7 @@ class LemmatizerOptim(PromptOptim):
         Returns:
             str: The WordNet POS tag.
         """
-        tag = nltk.pos_tag([word])[0][1][0].upper()
-        tag_dict = {
-            "J": wordnet.ADJ,
-            "N": wordnet.NOUN,
-            "V": wordnet.VERB,
-            "R": wordnet.ADV,
-        }
-        return tag_dict.get(tag, wordnet.NOUN)
+        pass
 
     def optimize(self, prompt: str) -> str:
         """
@@ -60,10 +53,4 @@ class LemmatizerOptim(PromptOptim):
         Returns:
             str: The optimized prompt text.
         """
-        words = prompt.split()
-        lemmatized_words = [
-            self.lemmatizer.lemmatize(word, self.get_wordnet_pos(word))
-            for word in words
-        ]
-        opti_prompt = " ".join(lemmatized_words)
-        return opti_prompt
+        pass

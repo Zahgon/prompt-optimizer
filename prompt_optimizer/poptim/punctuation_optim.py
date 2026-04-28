@@ -37,5 +37,4 @@ class PunctuationOptim(PromptOptim):
         Returns:
             str: The optimized prompt text with punctuation marks removed.
         """
-        opti_prompt = prompt.translate(str.maketrans("", "", string.punctuation))
-        return opti_prompt
+        pass

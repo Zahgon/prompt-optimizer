@@ -33,26 +33,4 @@ class BERTScoreMetric(Metric):
         Returns:
             dict: A dictionary containing the precision, recall, and F1 score.
         """
-        inputs = self.tokenizer(
-            [prompt_before, prompt_after],
-            return_tensors="pt",
-            padding=True,
-            truncation=True,
-        )
-        outputs = self.model(**inputs, output_hidden_states=True)
-        embedding1 = outputs.hidden_states[-2][0]
-        embedding2 = outputs.hidden_states[-2][1]
-        cos_sim = torch.nn.functional.cosine_similarity(embedding1, embedding2)
-        precision, recall, f1 = (
-            cos_sim.mean().item(),
-            cos_sim.max().item(),
-            2
-            * cos_sim.mean().item()
-            * cos_sim.max().item()
-            / (cos_sim.mean().item() + cos_sim.max().item()),
-        )
-        return {
-            "bert_score_precision": precision,
-            "bert_score_recall": recall,
-            "bert_score_f1": f1,
-        }
+        pass

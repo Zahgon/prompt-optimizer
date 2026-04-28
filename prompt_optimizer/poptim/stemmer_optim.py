@@ -38,7 +38,4 @@ class StemmerOptim(PromptOptim):
         Returns:
             str: The optimized prompt after applying stemming.
         """
-        words = prompt.split()
-        stemmed_words = [self.stemmer.stem(word) for word in words]
-        opti_prompt = " ".join(stemmed_words)
-        return opti_prompt
+        pass

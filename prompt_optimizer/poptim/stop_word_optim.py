@@ -42,7 +42,4 @@ class StopWordOptim(PromptOptim):
         Returns:
             str: The optimized prompt after removing stop words.
         """
-        words = prompt.split()
-        filtered_words = [word for word in words if word.lower() not in self.stop_words]
-        opti_prompt = " ".join(filtered_words)
-        return opti_prompt
+        pass

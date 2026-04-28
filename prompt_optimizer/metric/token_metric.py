@@ -38,10 +38,7 @@ class TokenMetric(Metric):
         Returns:
             dict: A dictionary containing the optimization ratio.
         """
-        n_tokens_before = len(self.tokenizer.encode(prompt_before))
-        n_tokens_after = len(self.tokenizer.encode(prompt_after))
-        opti_ratio = (n_tokens_before - n_tokens_after) / n_tokens_before
-        return {self.key: opti_ratio}
+        pass
 
     def __call__(self, prompt_before: str, prompt_after: str) -> dict:
         """

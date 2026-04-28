@@ -40,7 +40,4 @@ class AutocorrectOptim(PromptOptim):
         Returns:
             str: The optimized prompt text after applying autocorrection.
         """
-        words = prompt.split()
-        autocorrected_words = [self.spell(word) for word in words]
-        opti_prompt = " ".join(autocorrected_words)
-        return opti_prompt
+        pass

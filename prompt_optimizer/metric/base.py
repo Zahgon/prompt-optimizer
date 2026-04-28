@@ -31,8 +31,7 @@ class Metric(ABC):
         Returns:
             dict: The result of the metric computation.
         """
-        res = self.run(json_data_before["content"], json_data_after["content"])
-        return res
+        pass
 
     def batch_run(
         self,
@@ -55,34 +54,7 @@ class Metric(ABC):
         Returns:
             float: The average metric value across the batch.
         """
-        avg_m = defaultdict(float)
-        n = 0
-        for pb, pa in zip(prompts_before, prompts_after):
-            if json:
-                if skip_system and pb["role"] == "system":
-                    continue
-                else:
-                    res = self.run_json(pb, pa)
-                    n += 1
-
-            elif langchain:
-                if skip_system and pb.role == "system":
-                    continue
-                else:
-                    res = self.run(pb.content, pa.content)
-                    n += 1
-
-            else:
-                res = self.run(pb, pa)
-                n += 1
-
-            for key in res:
-                avg_m[key] += res[key]
-
-        for key in avg_m:
-            avg_m[key] /= n
-
-        return avg_m
+        pass
 
     def __call__(self, prompt_before: str, prompt_after: str) -> dict:
         """

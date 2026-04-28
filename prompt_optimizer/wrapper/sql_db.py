@@ -38,7 +38,7 @@ class SQLDBManager:
         self.username = "default"
 
     def set_user(self, username):
-        self.username = username
+        pass
 
     def __enter__(self):
         """
@@ -58,11 +58,7 @@ class SQLDBManager:
         """
         Connects to the SQLite database.
         """
-        try:
-            self.connection = sqlite3.connect(self.database_path)
-            self.cursor = self.connection.cursor()
-        except sqlite3.Error as e:
-            print(f"Error connecting to the SQLite database: {e}")
+        pass
 
     def create_table(self):
         """
@@ -71,28 +67,7 @@ class SQLDBManager:
         Args:
             table_name: The name of the table.
         """
-        try:
-            self.cursor.execute(
-                f"""CREATE TABLE IF NOT EXISTS {self.table_name} (
-                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    timestamp DATETIME,
-                                    username TEXT,
-                                    prompt_before TEXT,
-                                    prompt_after TEXT,
-                                    continuation TEXT,
-                                    prompt_before_token_count INTEGER,
-                                    prompt_after_token_count INTEGER,
-                                    continuation_token_count INTEGER,
-                                    model_name TEXT,
-                                    error INTEGER,
-                                    error_name TEXT,
-                                    optimizer_latency FLOAT,
-                                    request_latency FLOAT
-                                )"""
-            )
-
-        except sqlite3.Error as e:
-            print(f"Error creating table: {e}")
+        pass
 
     def add(self, data: Tuple) -> bool:
         """
@@ -104,38 +79,10 @@ class SQLDBManager:
         Returns:
             bool: `True` if successfully inserted values else `False`.
         """
-        try:
-            self.cursor.execute(
-                f"""INSERT INTO {self.table_name} (
-                        timestamp,
-                        username,
-                        prompt_before,
-                        prompt_after,
-                        continuation,
-                        prompt_before_token_count,
-                        prompt_after_token_count,
-                        continuation_token_count,
-                        model_name,
-                        error,
-                        error_name,
-                        optimizer_latency,
-                        request_latency
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                data,
-            )
-            self.connection.commit()
-
-        except sqlite3.Error as e:
-            print(f"Error adding data: {e}")
-            return False
-
-        return True
+        pass
 
     def close(self):
         """
         Closes the database connection and cursor.
         """
-        if self.cursor:
-            self.cursor.close()
-        if self.connection:
-            self.connection.close()
+        pass
